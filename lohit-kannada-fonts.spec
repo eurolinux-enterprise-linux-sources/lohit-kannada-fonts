@@ -3,7 +3,7 @@
 
 Name:           %{fontname}-fonts
 Version:        2.4.5
-Release:        2%{?dist}
+Release:        4%{?dist}
 Summary:        Free Kannada font
 
 Group:          User Interface/X
@@ -15,8 +15,10 @@ BuildArch:      noarch
 BuildRequires: fontforge >= 20080429
 BuildRequires:  fontpackages-devel
 Requires:       fontpackages-filesystem
-Obsoletes: lohit-fonts-common < %{version}-%{release}
 Patch1: bug-578032.patch
+Patch2: bug-577127.patch
+Patch3: bug-577127-1.patch
+Obsoletes: lohit-fonts-common < %{version}-%{release}
 
 %description
 This package provides a free Kannada truetype/opentype font.
@@ -25,7 +27,8 @@ This package provides a free Kannada truetype/opentype font.
 %prep
 %setup -q -n %{fontname}-%{version} 
 %patch1 -p1 -b .1-fix-font-conf
-
+%patch2 -p1 -b .2-increase-kerning
+%patch3 -p1 -b .2-handline-zwj
 
 %build
 make
@@ -55,6 +58,13 @@ rm -fr %{buildroot}
 
 
 %changelog
+* Thu Jan 20 2011 Pravin Satpute <psatpute@redhat.com> - 2.4.5-4
+- Resolves: bug 577127
+- will work when, zwj processing will be fixed in pango
+
+* Mon Oct 18 2010 Pravin Satpute <psatpute@redhat.com> - 2.4.5-3
+- fixed bug 577127
+
 * Tue May 04 2010 Pravin Satpute <psatpute@redhat.com> - 2.4.5-2
 - Resolves: bug 586857
 
@@ -63,7 +73,7 @@ rm -fr %{buildroot}
 - Resolves: bug 577128
 - Resolves: bug 577127
 
-*Mon Dec 28 2009 Pravin Satpute <psatpute@redhat.com> - 2.4.4-3
+* Mon Dec 28 2009 Pravin Satpute <psatpute@redhat.com> - 2.4.4-3
 - fixed bug 548686, license field
 - Resolves: bug 550991
 
