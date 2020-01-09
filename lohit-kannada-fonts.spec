@@ -3,7 +3,7 @@
 
 Name:           %{fontname}-fonts
 Version:        2.4.5
-Release:        4%{?dist}
+Release:        5%{?dist}
 Summary:        Free Kannada font
 
 Group:          User Interface/X
@@ -18,6 +18,7 @@ Requires:       fontpackages-filesystem
 Patch1: bug-578032.patch
 Patch2: bug-577127.patch
 Patch3: bug-577127-1.patch
+Patch4: bug-691289.patch
 Obsoletes: lohit-fonts-common < %{version}-%{release}
 
 %description
@@ -28,7 +29,8 @@ This package provides a free Kannada truetype/opentype font.
 %setup -q -n %{fontname}-%{version} 
 %patch1 -p1 -b .1-fix-font-conf
 %patch2 -p1 -b .2-increase-kerning
-%patch3 -p1 -b .2-handline-zwj
+%patch3 -p1 -b .3-handline-zwj
+%patch4 -p1 -b .4-added-rupee-symbol
 
 %build
 make
@@ -58,6 +60,9 @@ rm -fr %{buildroot}
 
 
 %changelog
+* Tue Jul 05 2011 Pravin Satpute <psatpute@redhat.com> - 2.4.5-5
+- Resolves: bug 691289
+
 * Thu Jan 20 2011 Pravin Satpute <psatpute@redhat.com> - 2.4.5-4
 - Resolves: bug 577127
 - will work when, zwj processing will be fixed in pango
