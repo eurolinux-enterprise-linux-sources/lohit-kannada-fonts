@@ -3,7 +3,7 @@
 
 Name:           %{fontname}-fonts
 Version:        2.5.3
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Free Kannada font
 
 Group:          User Interface/X
@@ -48,6 +48,9 @@ ln -s %{_fontconfig_templatedir}/%{fontconf} \
 
 
 %changelog
+* Fri Dec 27 2013 Daniel Mach <dmach@redhat.com> - 2.5.3-3
+- Mass rebuild 2013-12-27
+
 * Fri Apr 12 2013 Pravin Satpute <psatpute@redhat.com> - 2.5.3-2
 - Resolved #950521
 
